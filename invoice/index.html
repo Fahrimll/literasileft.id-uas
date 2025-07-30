@@ -1,0 +1,48 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; margin: 0; }
+    header, footer { background-color: maroon; color: white; padding: 20px; text-align: center; }
+    nav { background-color: #ccc; text-align: center; padding: 10px; }
+    nav a { margin: 0 15px; color: maroon; text-decoration: none; font-weight: bold; }
+    .container { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+    h2 { color: maroon; }
+  </style>
+</head>
+<body>
+
+<header><h1>LITERASILEFT.ID</h1></header>
+
+<nav>
+  <a href="../index.html">Daftar Buku</a>
+  <a href="../pemesanan/index.html">Pemesanan</a>
+  <a href="../tentang/index.html">Tentang Kami</a>
+  <a href="../kontak/index.html">Kontak</a>
+  <a href="index.html">Struck</a>
+</nav>
+
+<div class="container">
+  <h2>Struk Pemesanan</h2>
+  <p><strong>Nama:</strong> <span id="nama"></span></p>
+  <p><strong>Buku:</strong> <span id="buku"></span></p>
+  <p><strong>Jumlah:</strong> <span id="jumlah"></span></p>
+  <p><strong>Alamat:</strong> <span id="alamat"></span></p>
+  <p><strong>Pembayaran:</strong> <span id="metode"></span></p>
+</div>
+
+<footer>&copy; 2025 LITERASILEFT.ID | Gmail: Fahrimuazzamil05@gmail.com</footer>
+
+<script>
+  const q = new URLSearchParams(window.location.search);
+  document.getElementById("nama").textContent = q.get("nama") || "-";
+  document.getElementById("buku").textContent = q.get("buku") || "-";
+  document.getElementById("jumlah").textContent = q.get("jumlah") || "-";
+  document.getElementById("alamat").textContent = q.get("alamat") || "-";
+  document.getElementById("metode").textContent = q.get("metode") || "-";
+</script>
+
+</body>
+</html>
