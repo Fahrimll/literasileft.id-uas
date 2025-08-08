@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Struk Pemesanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+    }
+
+    header, footer {
+      background-color: maroon;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #ccc;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: maroon;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: maroon;
+      text-align: center;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    strong {
+      display: inline-block;
+      width: 150px;
+    }
+
+    button {
+      background: maroon;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background: #800000;
+    }
+  </style>
+</head>
+<body>
+
+<header><h1>LITERASILEFT.ID</h1></header>
+
+<nav>
+  <a href="../index.html">Daftar Buku</a>
+  <a href="../pemesanan/index.html">Pemesanan</a>
+  <a href="../tentang/index.html">Tentang Kami</a>
+  <a href="../kontak/index.html">Kontak</a>
+  <a href="index.html">Struk</a>
+</nav>
+
+<div class="container">
+  <h2>Struk Pemesanan</h2>
+  <p><strong>Waktu Transaksi:</strong> <span id="waktu">-</span></p>
+  <p><strong>Nama:</strong> <span id="nama">-</span></p>
+  <p><strong>Buku:</strong> <span id="buku">-</span></p>
+  <p><strong>Jumlah:</strong> <span id="jumlah">-</span></p>
+  <p><strong>Harga per Buku:</strong> Rp <span id="harga">-</span></p>
+  <p><strong>Subtotal:</strong> Rp <span id="subtotal">-</span></p>
+  <p><strong>Alamat:</strong> <span id="alamat">-</span></p>
+  <p><strong>Pembayaran:</strong> <span id="metode">-</span></p>
+
+  <button onclick="window.print()">Cetak Struk</button>
+</div>
+
+<footer>
+  &copy; 2025 LITERASILEFT.ID | Email: fahrimuazzamil05@gmail.com
+</footer>
+
+<script>
+  const q = new URLSearchParams(window.location.search);
+  const waktu = q.get("waktu") || "-";
+  const nama = q.get("nama") || "-";
+  const buku = q.get("buku") || "-";
+  const jumlah = parseInt(q.get("jumlah")) || 0;
+  const alamat = q.get("alamat") || "-";
+  const metode = q.get("metode") || "-";
+
+  // Daftar harga sesuai codingan utama
+  const hargaBukuList = {
+    "AYAT AYAT KIRI": 85000,
+    "MADILOG TAN MALAKAA": 85000,
+    "SEJARAH FILSAFAT BARAT": 85000,
+    "LAUT BERCERITA": 80000,
+    "PULANG PERGI": 80000,
+    "FILOSOFI TERAS": 90000
+  };
+
+  // Ambil harga sesuai buku yang dipilih
+  let hargaPerBuku = hargaBukuList[buku] || 0;
+
+  // Hitung subtotal
+  let subtotal = hargaPerBuku * jumlah;
+
+  // Jika beli 3 buku, harga menyesuaikan (tetap jumlah × harga per buku)
+  // Kalau ada promo khusus di sini, bisa diatur lagi
+  if (jumlah >= 3) {
+    subtotal = hargaPerBuku * jumlah;
+  }
+
+  // Tampilkan ke HTML
+  document.getElementById("waktu").textContent = waktu;
+  document.getElementById("nama").textContent = nama;
+  document.getElementById("buku").textContent = buku;
+  document.getElementById("jumlah").textContent = jumlah;
+  document.getElementById("harga").textContent = hargaPerBuku.toLocaleString("id-ID");
+  document.getElementById("subtotal").textContent = subtotal.toLocaleString("id-ID");
+  document.getElementById("alamat").textContent = alamat;
+  document.getElementById("metode").textContent = metode;
+</script>
+
+
+</body>
+</html>
